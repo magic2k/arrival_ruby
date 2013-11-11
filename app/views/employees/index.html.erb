@@ -1,0 +1,16 @@
+<h1>Сотрудники</h1>
+
+<div class="row">
+  <div class="span6">
+	<div class="users">
+	  <ul>
+		<% @employees.each do |e| %>
+		<li>
+		  <%= link_to e.name, e %>
+		  <%= link_to 'Удалить', e, method: :delete, confirm: 'Точно?', class: "small text-danger" %>
+		</li>
+	    <% end %>
+	  </ul>
+	</div>		
+  </div>
+</div>

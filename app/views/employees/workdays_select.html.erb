@@ -1,0 +1,25 @@
+<!-- TODO: replace this with AJAX -->
+<h1>Выбор рабочих дней</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+	<%= form_tag '/overall_report' do %>
+	<ul>
+		<% @range_days.each do |d| %>
+			<% if d.cwday == 6 or d.cwday == 7  %>
+				<li><%= check_box_tag "work_days[]", d %>
+			<% else %>
+				<li><%= check_box_tag "work_days[]", d, d %>
+			<% end %>	
+			<%= d %>
+
+		<% end %>
+	</ul>	
+		<%= hidden_field_tag :start_date, @start_date %>
+		<%= hidden_field_tag :end_date, @end_date %>
+
+		<%= submit_tag 'Отчет', class: 'btn btn-lg' %>
+	<% end %>
+	</div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+== Arrival reports for Nord studio
+
+App for generating workhours reports for employees of Nord studio
+
+Current features:
+* Personal reports
+* Overall reports
+* Generating xlsx report (axlsx gem)
+
