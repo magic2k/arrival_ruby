@@ -25,6 +25,4 @@
 //= require twitter/bootstrap/collapse
 //= require twitter/bootstrap/carousel
 //= require twitter/bootstrap/affix
-//= require anjlab/datepicker
-//= require anjlab/timepicker
 //= require_tree .

@@ -47,9 +47,6 @@ GEM
       nokogiri (>= 1.4.1)
       rubyzip (~> 1.0.0)
     builder (3.1.4)
-    business_time (0.6.2)
-      activesupport (>= 3.1.0)
-      tzinfo (~> 0.3.31)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -60,7 +57,6 @@ GEM
     erubis (2.7.0)
     execjs (2.0.2)
     hike (1.2.3)
-    holidays (1.0.5)
     htmlentities (4.3.1)
     i18n (0.6.5)
     jbuilder (1.5.2)
@@ -147,9 +143,7 @@ DEPENDENCIES
   anjlab-bootstrap-rails!
   anjlab-widgets!
   axlsx
-  business_time
   coffee-rails (~> 4.0.0)
-  holidays
   jbuilder (~> 1.2)
   jquery-rails
   mysql

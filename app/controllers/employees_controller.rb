@@ -2,7 +2,8 @@ class EmployeesController < ApplicationController
 	include AxlsxHelper
 	require 'employee_data'
 
-	# before_action :get_data_from_remote_db, only: [:show]
+	before_action :get_data_from_remote_db, only: [:personal_report]
+	before_action :get_data_for_report, 	only: [:overall_report, :get_xlsx]
 
 	def index
 		@employees = Employee.all
@@ -19,32 +20,28 @@ class EmployeesController < ApplicationController
 	end	
 
 	def personal_report				
-		@data = ArrivalData.where("USER = :employee AND TIMEON >= :start_date AND TIMEON < :end_date", 
-			employee: params[:employee], start_date: params[:start_date], end_date: (params[:end_date] + 1.to_s) )	
+		@employee_name = params[:employee]
+		# @data = ArrivalData.where("USER = :employee AND TIMEON >= :start_date AND TIMEON < :end_date", 
+		# 	employee: params[:employee], start_date: params[:start_date], end_date: (params[:end_date] + 1.to_s) )	
 	end
 
 	def overall_report
 
-		@employees_data = Array.new
-		employees = Employee.all
-		employee_names = employees.map { |e| e.name }
-		@work_days = params[:work_days]
+		# @employees_data = Array.new
+		# employees = Employee.all
+		# @employee_names = employees.map { |e| e.name }
+		# @work_days = params[:work_days]
 
-		employee_names.each do |n|
-			data = ArrivalData.where("USER = :employee AND TIMEON >= :start_date AND TIMEON < :end_date", 
-				employee: n, start_date: params[:start_date], end_date: (params[:end_date] + 1.to_s) )
-			ed = EmployeeData.new(n)
-			@employees_data << ed
+		# @employee_names.each do |n|
+		# 	data = ArrivalData.where("USER = :employee AND TIMEON >= :start_date AND TIMEON < :end_date", 
+		# 		employee: n, start_date: params[:start_date], end_date: (params[:end_date] + 1.to_s) )
+		# 	ed = EmployeeData.new(n)
+		# 	@employees_data << ed
 
-			data.each do |d|
-				ed.add_times( d.TIMEON ) 
-			end	
-		end	
-
-		#@db_data = ArrivalData.where("TIMEON >= :start_date AND TIMEON < :end_date", 
-		#	employee: params[:employee], start_date: params[:start_date], end_date: (params[:end_date] + 1.to_s))
-
-		# @employees_data.first.name 
+		# 	data.each do |d|
+		# 		ed.add_times( d.TIMEON ) 
+		# 	end	
+		# end	
 	end	
 
 	def workdays_select
@@ -69,7 +66,8 @@ class EmployeesController < ApplicationController
 	end	
 
 	def get_xlsx
-		spreadsheet = create_xlsx_report
+		# TODO: parameters checking
+		spreadsheet = create_xlsx_report(@employees_data, @work_days)
 		respond_to do |format|
 			format.xlsx {
 				send_data( spreadsheet.to_stream.read,
@@ -101,7 +99,28 @@ class EmployeesController < ApplicationController
 		params.require(:employee).permit(:name, :vacation)
 	end	
 
-	# def get_data_from_remote_db	
-	# 	@arrival_data = 
-	# end	
+	def get_data_from_remote_db(employee=params[:employee])
+		@data = ArrivalData.where("USER = :employee AND TIMEON >= :start_date AND TIMEON < :end_date", 
+			employee: employee, start_date: params[:start_date], end_date: (params[:end_date] + 1.to_s) )	
+	end	
+
+	def get_data_for_report
+      if !(@employees_data && @employee_names && @employees_data && @work_days)
+
+		@employees_data = Array.new
+		employees = Employee.all
+		@employee_names = employees.map { |e| e.name }
+		@work_days = params[:work_days]
+
+		@employee_names.each do |n|
+			data = get_data_from_remote_db(n)
+			ed = EmployeeData.new(n)
+			@employees_data << ed
+
+			data.each do |d|
+				ed.add_times( d.TIMEON ) 
+			end
+		end		
+	  end
+	end	
 end

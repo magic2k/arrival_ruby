@@ -3,7 +3,16 @@
 	<div class="row">
 		<div class="col-md-9">
 			<table class="table table-striped"> 
-			<aside><%= link_to 'Отчет в xlsx', get_xlsx_path + '.xlsx' %></aside>
+			<aside>
+			  <%= form_tag get_xlsx_path + '.xlsx' do %>
+			    <% params[:work_days].each do |w| %>
+			      <%= hidden_field_tag "work_days[]", w %>	
+			    <% end %>
+			    <%= hidden_field_tag :start_date, params[:start_date] %>
+			    <%= hidden_field_tag :end_date,   params[:end_date] %>
+			    <%= submit_tag 'Отчет в xlsx', class: 'btn btn-primary' %>
+			  <% end %>
+			</aside>
 			<thead>
 				<tr>
 					<th>Имя</th>

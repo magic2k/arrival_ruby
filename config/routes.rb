@@ -12,7 +12,7 @@ ArrivalRuby::Application.routes.draw do
   post 'overall_report'   =>    'employees#overall_report'
   post 'workdays_select'  =>    'employees#workdays_select'
   get  'today_report'     =>    'employees#today_report'
-  get  'get_xlsx'         =>    'employees#get_xlsx'
+  post  'get_xlsx'         =>    'employees#get_xlsx'
 
   get 'admin'             =>    'admin#index'
   get 'admin/remote_db'

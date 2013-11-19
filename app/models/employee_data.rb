@@ -16,6 +16,7 @@ class EmployeeData
 		visited_days = Array.new
 		visited_worked_days = Array.new
 		@visited_worked_daytimes = Array.new
+		@visited_worked_daytimes_late = Array.new
 
 		# получение дат посещений
 		@times.each do |t|
@@ -54,10 +55,16 @@ class EmployeeData
 		@visited_worked_daytimes.each do |t|
 			tf = Time.parse( DateTime.parse(t).strftime('%H:%M') )
 			if tf > arrive
+				@visited_worked_daytimes_late << t
 				@time += TimeDifference.between(arrive, tf).in_minutes
 			end	
 		end	
 		@time
 		@result = { hours: @time.to_i / 60, minutes: @time.to_i % 60}
+	end	
+
+	# TODO: refactor this aghtung
+	def days_late
+		@visited_worked_daytimes_late
 	end	
 end 

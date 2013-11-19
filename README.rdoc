@@ -6,4 +6,6 @@ Current features:
 * Personal reports
 * Overall reports
 * Generating xlsx report (axlsx gem)
+* app using 2 databases
 
+database.yml not included

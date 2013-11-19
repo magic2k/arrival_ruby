@@ -7,7 +7,7 @@
 		<% @employees.each do |e| %>
 		<li>
 		  <%= link_to e.name, e %>
-		  <%= link_to 'Удалить', e, method: :delete, confirm: 'Точно?', class: "small text-danger" %>
+		  <%= link_to 'Удалить', e, method: :delete, data: {confirm: 'Точно?'}, class: "small text-danger" %>
 		</li>
 	    <% end %>
 	  </ul>
