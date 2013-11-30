@@ -6,16 +6,17 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'axlsx'
 gem 'mysql'
 gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails', github: 'anjlab/bootstrap-rails'
-gem 'anjlab-widgets', github: 'anjlab/anjlab-widgets'
 #gem 'holidays'
 #gem 'business_time'
 gem 'time_difference'
+#gem 'rspec'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

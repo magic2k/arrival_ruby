@@ -19,14 +19,23 @@
 		<%= form_tag '/personal_report' do %>
 			<%= label :select, 'Сотрудник', class: 'col-sm-2 control-label'  %>
 			<%= select(@employees, :employee, options_from_collection_for_select(@employees, :name, :name), {}, {class: 'form-control', id: 'empl_select', name: 'employee'} ) %>
-			<%= label :start_date, 'c ', class: 'col-sm-2 control-label' %>
-			<%= date_field_tag :start_date %>
-			<%= label :end_date, 'по ', class: 'col-sm-2 control-label' %>
-			<%= date_field_tag :end_date %>			
-			<%= submit_tag 'Отчет', class: 'btn btn-lg' %>
+			<%= label :start_date, 'c ', 	class: 'col-sm-2 control-label' %>
+			<%= text_field_tag :start_date, '', id: 'dp-start1' %>
+			<%= label :end_date, 'по ', 	class: 'col-sm-2 control-label' %>
+			<%= text_field_tag :end_date, '',	id: 'dp-end1' %>
+			<%= submit_tag 'Отчет', 		class: 'btn btn-lg' %>
 		<% end %>
 		<hr class="featurette-divider">	
 	</div>
 	</div>
 
 </div>
+
+<!--
+<script>
+	$(function(){
+		$('.datepicker').datepicker({ 
+				format: 'yyyy-mm-dd'
+			})	});
+</script>
+-->
