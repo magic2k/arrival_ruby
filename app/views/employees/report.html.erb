@@ -1,40 +1,44 @@
 <div class="container">
-<h2>Отчеты</h2>
-	<div class="row">
-	<div class="col-md-4 allrep">
-		<h2>Общий</h2>
-		<%# form_tag '/overall_report' do %>
-		<%= form_tag '/workdays_select' do %>
-			<%= label :start_date, 'c ', class: 'col-sm-2 control-label' %>
-			<%= date_field_tag :start_date %>
-			<%= label :end_date, 'по ', class: 'col-sm-2 control-label' %>
-			<%= date_field_tag :end_date %>			
-			<%= submit_tag 'Далее', class: 'btn btn-lg' %>	
-		<% end %>
-	<%# link_to ,  %>
-		<hr class="featurette-divider">	
-	</div>
-	<div class="col-md-4 persrep">
-		<h2>По сотруднику</h2>
-		<%= form_tag '/personal_report' do %>
-			<%= label :select, 'Сотрудник', class: 'col-sm-2 control-label'  %>
-			<%= select(@employees, :employee, options_from_collection_for_select(@employees, :name, :name), {}, {class: 'form-control', id: 'empl_select', name: 'employee'} ) %>
-			<%= label :start_date, 'c ', 	class: 'col-sm-2 control-label' %>
-			<%= text_field_tag :start_date, '', id: 'dp-start1' %>
-			<%= label :end_date, 'по ', 	class: 'col-sm-2 control-label' %>
-			<%= text_field_tag :end_date, '',	id: 'dp-end1' %>
-			<%= submit_tag 'Отчет', 		class: 'btn btn-lg' %>
-		<% end %>
-		<hr class="featurette-divider">	
-	</div>
-	</div>
+  <h2>Отчеты</h2>
+
+  <div class="row">
+    <div class="col-md-4 allrep">
+      <h2>Общий</h2>
+      <%# form_tag '/overall_report' do %>
+      <%= form_tag '/workdays_select', class: 'form-horizontal', role: 'form' do %>
+          <div class="form-group">
+            <%= label :start_date, 'c ', class: 'col-sm-1 control-label' %>
+            <%= text_field_tag :start_date, '', id: 'dp-start1' %>
+            <%= label :end_date, 'по ', class: 'col-sm-1 control-label' %>
+            <%= text_field_tag :end_date, '', id: 'dp-end1' %>
+            <%= submit_tag 'Далее', class: 'btn btn-lg' %>
+          </div>
+      <% end %>
+      <hr class="featurette-divider">
+    </div>
+    <div class="col-md-4 persrep">
+      <h2>По сотруднику</h2>
+      <%= form_tag '/personal_report', class: 'form-horizontal', role: 'form' do %>
+          <div class="form-group">
+            <%# label :select, 'Сотрудник', class: 'col-sm-1 control-label' %>
+            <%= select(@employees, :employee, options_from_collection_for_select(@employees, :name, :name), {}, {class: 'form-control', id: 'empl_select', name: 'employee'}) %>
+            <%= label :start_date, 'c ', class: 'col-sm-1 control-label' %>
+            <%= text_field_tag :start_date, '', id: 'dp-start2' %>
+            <%= label :end_date, 'по ', class: 'col-sm-1 control-label' %>
+            <%= text_field_tag :end_date, '', id: 'dp-end2' %>
+            <%= submit_tag 'Отчет', class: 'btn btn-lg' %>
+          </div>
+      <% end %>
+      <hr class="featurette-divider">
+    </div>
+  </div>
 
 </div>
 
 <!--
 <script>
 	$(function(){
-		$('.datepicker').datepicker({ 
+		$('.datepicker').datepicker({
 				format: 'yyyy-mm-dd'
 			})	});
 </script>

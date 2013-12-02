@@ -10,6 +10,8 @@ gem 'jquery-ui-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
+gem 'capistrano'
+gem 'capistrano-rails'
 gem 'axlsx'
 gem 'mysql'
 gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails', github: 'anjlab/bootstrap-rails'
@@ -26,7 +28,6 @@ end
 # Use unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
 # Use debugger

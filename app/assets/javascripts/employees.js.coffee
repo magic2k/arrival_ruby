@@ -2,8 +2,13 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+ready = ->
+  jQuery ->
+    $('#dp-start1').datepicker(dateFormat: 'yy-mm-dd', autoclose: true)
+    $('#dp-end1').datepicker(dateFormat: 'yy-mm-dd', autoclose: true)
+    $('#dp-start2').datepicker(dateFormat: 'yy-mm-dd', autoclose: true)
+    $('#dp-end2').datepicker(dateFormat: 'yy-mm-dd', autoclose: true)
 
-jQuery ->
-  $('#dp-start1').datepicker format: 'yyyy-mm-dd', autoclose: false
-
+$(document).ready(ready)
+$(document).on('page:load', ready)
 #jQuery -> $("#dp-start1").datepicker()
