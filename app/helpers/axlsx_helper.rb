@@ -1,6 +1,16 @@
- module AxlsxHelper
+#monkeypatch for comments in Excel 2010
+module Axlsx
+  class Comments
+    def relationships
+      [Relationship.new(self, VML_DRAWING_R, "../#{vml_drawing.pn}"),
+       Relationship.new(self, COMMENT_R, "../#{pn}")]
+    end
+  end
+end
 
-	require 'axlsx'
+module AxlsxHelper
+
+require 'axlsx'
 
 	def create_xlsx_report(data, work_days)	  
 	  Axlsx::trust_input = false
