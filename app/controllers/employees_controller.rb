@@ -108,7 +108,7 @@ class EmployeesController < ApplicationController
       if !(@employees_data && @employee_names && @employees_data && @work_days)
 
 		@employees_data = Array.new
-		employees = Employee.all
+		employees = Employee.order(name: :asc)
 		@employee_names = employees.map { |e| e.name }
 		@work_days = params[:work_days]
 
