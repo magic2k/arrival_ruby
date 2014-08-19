@@ -1,29 +1,30 @@
 <div class="container">
-	<h1>Сегодня</h1>
-	<div class="row">
-		<div class="col-md-9">
-			<table class="table table-striped"> 
-			<thead>
-				<tr>
-					<th>Имя</th>
-					<th>Время прихода</th>
-				</tr>
-			</thead>
-				<tbody>
-					<% @today_data.each do |k, v| %>
-						<tr>						
-						<%= content_tag(:td, k) %>
-						<% if v.nil? %>
-							<%= content_tag(:td,'Нет данных') %>
-						<% else %>
-							<%= content_tag(:td, DateTime.parse(v.TIMEON).strftime("%H:%M")) %>		
-							<%# content_tag(:td, v.TIMEON.utc.strftime("%H:%M")) %>		
-						<% end %>
-						 
-						</tr>
-					<% end %>
-				</tbody>
-			</table>
-		</div>
-	</div>	
+  <h1>Сегодня</h1>
+
+  <div class="row">
+    <div class="col-md-9">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Имя</th>
+          <th>Время прихода</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @today_data.each do |k, v| %>
+            <tr>
+              <%= content_tag(:td, k) %>
+              <% if v.nil? %>
+                  <%= content_tag(:td, 'Нет данных') %>
+              <% else %>
+                  <%= content_tag(:td, DateTime.parse(v.TIMEON).strftime("%H:%M")) %>
+                  <%# content_tag(:td, v.TIMEON.utc.strftime("%H:%M")) %>
+              <% end %>
+
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>	

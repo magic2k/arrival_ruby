@@ -1,36 +1,37 @@
 <div class="container">
-	<h1>Общий отчет</h1>
-	<div class="row">
-		<div class="col-md-9">
-			<table class="table table-striped"> 
-			<aside>
-			  <%= form_tag get_xlsx_path + '.xlsx' do %>
-			    <% params[:work_days].each do |w| %>
-			      <%= hidden_field_tag "work_days[]", w %>	
-			    <% end %>
-			    <%= hidden_field_tag :start_date, params[:start_date] %>
-			    <%= hidden_field_tag :end_date,   params[:end_date] %>
-			    <%= submit_tag 'Отчет в xlsx', class: 'btn btn-primary' %>
-			  <% end %>
-			</aside>
-			<thead>
-				<tr>
-					<th>Имя</th>
-					<th>Дней пропущено</th>
-					<th>Общее время опозданий</th>
-				</tr>
-			</thead>
-				<tbody>
-					<% @employees_data.each do |d| %>
-						<tr>
-							<%= content_tag(:td, d.name) %>
-							<%= content_tag(:td, d.days_absent(@work_days).size) %>
-							<% time = d.total_late_time(@work_days) %>
-							<%= content_tag(:td, time[:hours].to_s + ':' + time[:minutes].to_s) %>
-						</tr>
-					<% end %>
-				</tbody>
-			</table>
-		</div>
-	</div>	
+  <h1>Общий отчет</h1>
+
+  <div class="row">
+    <div class="col-md-9">
+      <table class="table table-striped">
+        <aside>
+          <%= form_tag get_xlsx_path + '.xlsx' do %>
+              <% params[:work_days].each do |w| %>
+                  <%= hidden_field_tag "work_days[]", w %>
+              <% end %>
+              <%= hidden_field_tag :start_date, params[:start_date] %>
+              <%= hidden_field_tag :end_date, params[:end_date] %>
+              <%= submit_tag 'Отчет в xlsx', class: 'btn btn-primary' %>
+          <% end %>
+        </aside>
+        <thead>
+        <tr>
+          <th>Имя</th>
+          <th>Дней пропущено</th>
+          <th>Общее время опозданий</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @employees_data.each do |d| %>
+            <tr>
+              <%= content_tag(:td, d.name) %>
+              <%= content_tag(:td, d.days_absent(@work_days).size) %>
+              <% time = d.total_late_time(@work_days) %>
+              <%= content_tag(:td, time[:hours].to_s + ':' + time[:minutes].to_s) %>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>	

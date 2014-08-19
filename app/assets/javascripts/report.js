@@ -12,11 +12,11 @@
 //    format: 'yyy-mm-dd'
 //})
 
-    /**
+/**
 
-jQuery(function(){ $("#dp-start1").datepicker({
+ jQuery(function(){ $("#dp-start1").datepicker({
     format: 'yyyy-mm-dd',
     autoclose: true
 })	});
 
-       */
+ */
