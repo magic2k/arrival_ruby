@@ -1,23 +1,24 @@
 <div class="container">
- <h1><%= @employee.name %></h1>
-	<div class="row">
-		<div class="col-md-9">
-			<table class="table table-striped"> 
-			<thead>
-				<tr>
-					<th>Дата</th>
-					<th>Время</th>
-				</tr>
-			</thead>
-				<tbody>
-					<% @data.each do |d| %>
-						<tr>
-						  <%= content_tag(:td, DateTime.parse(d.TIMEON).strftime("%d-%m-%Y")) %>
-						  <%= content_tag(:td, DateTime.parse(d.TIMEON).strftime("%H:%M")) %>
-						</tr>
-					<% end %>
-				</tbody>
-			</table>
-		</div>
-	</div>	
+  <h1><%= @employee.name %></h1>
+
+  <div class="row">
+    <div class="col-md-9">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Дата</th>
+          <th>Время</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @data.each do |d| %>
+            <tr>
+              <%= content_tag(:td, DateTime.parse(d.TIMEON).strftime("%d-%m-%Y")) %>
+              <%= content_tag(:td, DateTime.parse(d.TIMEON).strftime("%H:%M")) %>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>	

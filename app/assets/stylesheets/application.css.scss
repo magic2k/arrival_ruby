@@ -16,19 +16,19 @@
 
 input[type="text"],
 input[type="password"],
-input[type="datetime"], 
-input[type="datetime-local"], 
-input[type="date"], 
-input[type="month"], 
-input[type="time"], 
-input[type="week"], 
-input[type="number"], 
-input[type="email"], 
-input[type="url"], 
-input[type="search"], 
-input[type="tel"], 
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
 input[type="select"],
-input[type="color"]  {
+input[type="color"] {
   @extend .form-control;
   height: auto;
   margin: 10px 0 10px 0;
@@ -37,7 +37,6 @@ input[type="color"]  {
 .nowrap {
   white-space: nowrap;
 }
-
 
 /* users index */
 
@@ -49,7 +48,7 @@ $grayMediumLight: #eaeaea;
     overflow: auto;
     padding: 10px 0;
     border-top: 1px solid $grayMediumLight;
-    &:last-child{
+    &:last-child {
       border-bottom: 1px solid $grayMediumLight;
     }
   }
