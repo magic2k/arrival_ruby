@@ -1,4 +1,4 @@
-== Arrival reports for Nord studio
+== Arrival reports for studio
 
 App for generating workhours reports for employees of Nord studio
 
